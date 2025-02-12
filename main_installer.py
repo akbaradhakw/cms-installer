@@ -64,7 +64,6 @@ def main():
                 else:
                     config = GhostServerConfig(
                         ip, username, password, 
-                        version, 
                         install_path, port, 
                         db_name, db_user, db_password, web_url
                     )
@@ -72,8 +71,6 @@ def main():
 
                 if installer.connect():
 
-                    installer.setup_firewall()
-                    
                     # CMS-specific installation steps
                     if selected_cms == "WordPress":
                         installer.install_mariadb()
@@ -82,6 +79,7 @@ def main():
                         installer.setup_php()
                         installer.install_wordpress()
                         installer.create_wp_config()
+                        installer.setup_firewall()
                     else:
                         installer.configure_database()
                         installer.install_docker()  
