@@ -94,7 +94,7 @@ volumes:
         ghost_install = [
             f"mkdir -p {self.config.install_path}",
             f'echo "{compose_content}" > {self.config.install_path}/docker-compose.yml',
-            f"cd {self.config.install_path} && docker-compose up -d"
+            f"docker-compose -f {self.config.install_path} up -d"
         ]
 
         
