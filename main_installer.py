@@ -31,7 +31,7 @@ def main():
                 install_path = st.text_input("Installation Path", "/var/www/html/cms")
             else:  # Ghost CMS
                 install_path = st.text_input("Installation Path", "/var/www/html/cms")
-                web_url = st.text_input("Website URL", "http://localhost:2368")
+                web_url = st.text_input("Website URL ", f"http://{ip}:{port}")
 
         # CMS Specific Configurations
         with col4:

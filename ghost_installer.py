@@ -76,7 +76,7 @@ services:
             # contrary to the default mentioned in the linked documentation, this image defaults to NODE_ENV=production (so development mode needs to be explicitly specified if desired)
             #NODE_ENV: development
         volumes:
-        - ghost:/var/lib/ghost/content
+        - ./ghost:/var/lib/ghost/content
 
     db:
         image: mysql:8.0
@@ -84,12 +84,11 @@ services:
         environment:
             MYSQL_ROOT_PASSWORD: {self.config.db_password}
         volumes:
-            - db:/var/lib/mysql
+            - ./db:/var/lib/mysql
 
 volumes:
     ghost:
-    db:
-        """
+    db:"""
 
         # Buat file docker-compose.yml di server
         ghost_install = [
