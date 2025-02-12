@@ -42,8 +42,6 @@ def main():
                 db_user = st.text_input("Database Username", "wp_user")
                 db_password = st.text_input("Database Password", type="password")
             else:  # Ghost CMS
-                ghost_versions = ["latest"]
-                version = st.selectbox("Ghost Version", ghost_versions)
                 db_name = st.text_input("Database Name", "ghost_db")
                 db_user = st.text_input("Database Username", "ghost_user")
                 db_password = st.text_input("Database Password", type="password")
@@ -64,32 +62,27 @@ def main():
                 else:
                     config = GhostServerConfig(
                         ip, username, password, 
-                        version, 
                         install_path, port, 
                         db_name, db_user, db_password
                     )
                     installer = GhostInstaller(config)
 
                 if installer.connect():
-                    # Install MariaDB first
-                    installer.install_mariadb()
-                    
-                    # Configure database
                     installer.configure_database()
                     
                     # Configure web server
-                    installer.configure_webserver()
                     installer.setup_firewall()
                     
                     # CMS-specific installation steps
                     if selected_cms == "WordPress":
+                        installer.install_mariadb()
+                        installer.configure_webserver()
                         installer.setup_php()
                         installer.install_wordpress()
                         installer.create_wp_config()
                     else:
-                        installer.install_nodejs()
+                        installer.install_docker()
                         installer.install_ghost()
-
                     st.success(f"🎉 {selected_cms} successfully installed on port {port}!")
 
             except Exception as e:

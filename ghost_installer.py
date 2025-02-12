@@ -43,13 +43,13 @@ class GhostInstaller:
     def install_docker(self):
         """Install docker and its dependencies."""
         st.write("🗃️ Installing Docker...")
-        mariadb_commands = """
+        docker_command = """
         apt-get update
         apt-get install -y docker docker-compose
         systemctl enable docker
         systemctl start docker
         """
-        self._run_command(mariadb_commands)
+        self._run_command(docker_command)
     
     def install_ghost(self):
         """Install Ghost using docker-compose."""
