@@ -81,7 +81,6 @@ def main():
                         installer.create_wp_config()
                         installer.setup_firewall()
                     else:
-                        installer.configure_database()
                         installer.install_docker()  
                         installer.install_ghost()
 

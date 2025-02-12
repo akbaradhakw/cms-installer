@@ -55,17 +55,16 @@ class GhostInstaller:
         """Install Ghost using docker-compose."""
         st.write("🗃️ Installing Ghost using docker-compose...")
 
-        compose_content = f"""
-        version: '3.1'
+        compose_content = f"""version: '3.1'
 
-        services:
+services:
 
-        ghost:
-            image: ghost:5-alpine
-            restart: always
-            ports:
+    ghost:
+        image: ghost:5-alpine
+        restart: always
+        ports:
             - {self.config.port}:2368
-            environment:
+        environment:
             # see https://ghost.org/docs/config/#configuration-options
             database__client: mysql
             database__connection__host: db
@@ -76,31 +75,33 @@ class GhostInstaller:
             url: {self.config.web_url}
             # contrary to the default mentioned in the linked documentation, this image defaults to NODE_ENV=production (so development mode needs to be explicitly specified if desired)
             #NODE_ENV: development
-            volumes:
-            - ghost:/var/lib/ghost/content
+        volumes:
+        - ghost:/var/lib/ghost/content
 
-        db:
-            image: mysql:8.0
-            restart: always
-            environment:
+    db:
+        image: mysql:8.0
+        restart: always
+        environment:
             MYSQL_ROOT_PASSWORD: {self.config.db_password}
-            volumes:
+        volumes:
             - db:/var/lib/mysql
 
-        volumes:
-        ghost:
-        db:
+volumes:
+    ghost:
+    db:
         """
 
         # Buat file docker-compose.yml di server
-        commands = [
+        ghost_install = [
             f"mkdir -p {self.config.install_path}",
             f'echo "{compose_content}" > {self.config.install_path}/docker-compose.yml',
             f"cd {self.config.install_path} && docker-compose up -d"
         ]
 
-        for cmd in commands:
-            self._run_command(cmd)
         
+        for cmd in ghost_install:
+            stdout, stderr = self._run_command(cmd)
+            if stderr:
+                st.error(f"❌ Error running command: {cmd}\n{stderr}")
+
         st.success("✅ Ghost installed successfully with docker-compose!")
-        self._run_command(ghost_commands)
