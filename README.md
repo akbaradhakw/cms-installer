@@ -14,21 +14,19 @@ A simple CMS installer for your VPS, supporting WordPress and Ghost CMS.
 - Minimum 1GB RAM (2GB+ recommended for Ghost CMS)
 
 ## Installation
-
-1. Clone the repository:
-   ```sh
-   git clone https://github.com/yourrepo/cms-installer.git
-   cd cms-installer
+1. Install python & dependency:
+   ```py
+   sudo apt install python3 && pip install streamlit paramiko
    ```
-2. Make the script executable:
-   ```sh
-   chmod +x install.sh
+2. Clone the repository:
+   ```py
+   git clone https://github.com/yourrepo/cms-installer.git && cd cms-installer
    ```
 3. Run the installer:
-   ```sh
-   sudo ./install.sh
+   ```py
+   python3 -m paramiko run main_installer.py
    ```
-4. Follow the on-screen instructions to select and install WordPress or Ghost CMS.
+5. Open localhost:8501 or yourip:8501 and follow the instruction.
 
 ## CMS Installation Details
 
@@ -46,12 +44,6 @@ A simple CMS installer for your VPS, supporting WordPress and Ghost CMS.
 After installation, visit your server’s IP or domain:
 - **WordPress**: `http://yourdomain.com/wp-admin`
 - **Ghost**: `http://yourdomain.com`
-
-## Uninstallation
-To remove the CMS, run:
-```sh
-sudo ./uninstall.sh
-```
 
 ## Contributing
 Contributions are welcome! Feel free to submit issues or pull requests.
