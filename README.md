@@ -1,22 +1,17 @@
-# CMS INSTALLER
+# CMS Installer
 
-Simple CMS installer for your VPS.
-
-## Supported Distributions
-
-| Distro  | Status |
-|---------|--------|
-| `Debian` | ✅ |
+A simple CMS installer for your VPS, supporting WordPress and Ghost CMS.
 
 ## Features
-- Automatic installation of WordPress and Ghost CMS
-- Configures necessary dependencies
-- Secure setup with minimal effort
+- Automated installation of WordPress and Ghost CMS
+- Configuration of necessary dependencies
+- Secure and optimized setup
+- Easy-to-use installation process
 
-## Requirements
+## Prerequisites
 - A Debian-based VPS
 - Root or sudo access
-- Minimum 1GB RAM (Recommended 2GB+ for Ghost CMS)
+- Minimum 1GB RAM (2GB+ recommended for Ghost CMS)
 
 ## Installation
 
@@ -33,27 +28,37 @@ Simple CMS installer for your VPS.
    ```sh
    sudo ./install.sh
    ```
-4. Follow the on-screen instructions to choose between WordPress and Ghost CMS.
+4. Follow the on-screen instructions to select and install WordPress or Ghost CMS.
 
-## CMS Details
+## CMS Installation Details
 
 ### WordPress
-- Installs Apache, MySQL, PHP (LAMP Stack)
-- Configures a new database for WordPress
-- Sets up a WordPress installation automatically
+- Installs and configures LAMP Stack (Apache, MySQL, PHP)
+- Sets up a new database and WordPress instance
+- Provides a secure initial setup
 
 ### Ghost CMS
-- Installs whole cms using Docker
+- Deploys Ghost CMS using Docker
+- Sets up a MySQL database container
+- Ensures Ghost runs as a Docker container for better manageability
 
-## Usage
-After installation, visit your server's IP or domain to access the CMS.
-- WordPress: `http://yourdomain.com/wp-admin`
-- Ghost: `http://yourdomain.com`
+## Accessing Your CMS
+After installation, visit your server’s IP or domain:
+- **WordPress**: `http://yourdomain.com/wp-admin`
+- **Ghost**: `http://yourdomain.com`
+
+## Uninstallation
+To remove the CMS, run:
+```sh
+sudo ./uninstall.sh
+```
+
+## Contributing
+Contributions are welcome! Feel free to submit issues or pull requests.
 
 ## License
 This project is licensed under the MIT License.
 
-## Contributing
-Feel free to contribute by submitting issues or pull requests!
-
+## Author
+Your Name - [yourwebsite.com](https://yourwebsite.com)
 
