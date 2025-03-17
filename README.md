@@ -47,6 +47,7 @@ After installation, visit your server’s IP or domain:
 
 ## Contributing
 Contributions are welcome! Feel free to submit issues or pull requests.
+[![Contributors](https://contrib.rocks/image?repo=akbaradhakw/cms-installer&max=10)](https://github.com/akbaradhakw/cms-installer/graphs/contributors)
 
 ## License
 This project is licensed under the MIT License.
