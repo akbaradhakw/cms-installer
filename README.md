@@ -52,5 +52,5 @@ Contributions are welcome! Feel free to submit issues or pull requests.
 This project is licensed under the MIT License.
 
 ## Author
-Baryoks - [aryok..e](https://aryok.me)
+Baryoks - [aryok.me](https://aryok.me)
 
